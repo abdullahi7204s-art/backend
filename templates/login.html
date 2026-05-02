@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black flex items-center justify-center h-screen text-white">
+
+<div class="bg-slate-900 p-10 rounded-2xl w-96">
+
+<h1 class="text-3xl mb-6 text-center">💸 FinTrack Pro</h1>
+
+{% if error %}
+<div class="bg-red-500 p-2 mb-3 rounded">{{ error }}</div>
+{% endif %}
+
+{% if success %}
+<div class="bg-green-500 p-2 mb-3 rounded">{{ success }}</div>
+{% endif %}
+
+<!-- LOGIN -->
+<form method="POST" class="mb-6">
+{% csrf_token %}
+<input type="hidden" name="login" value="1">
+<input name="username" placeholder="Username" class="w-full p-3 mb-3 bg-slate-800 rounded">
+<input name="password" type="password" placeholder="Password" class="w-full p-3 mb-3 bg-slate-800 rounded">
+
+<button class="w-full bg-purple-600 p-3 rounded">Login</button>
+</form>
+
+<hr class="mb-4 border-gray-700">
+
+<!-- REGISTER -->
+<form method="POST">
+{% csrf_token %}
+<input type="hidden" name="register" value="1">
+<input name="new_username" placeholder="New Username" class="w-full p-3 mb-3 bg-slate-800 rounded">
+<input name="new_password" type="password" placeholder="New Password" class="w-full p-3 mb-3 bg-slate-800 rounded">
+
+<button class="w-full bg-green-600 p-3 rounded">Create Account</button>
+</form>
+
+</div>
+</body>
+</html>
